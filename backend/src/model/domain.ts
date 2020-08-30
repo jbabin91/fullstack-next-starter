@@ -25,7 +25,7 @@ export class User extends Domain {
     @val.required()
     public name: string,
     @authorize.role('Admin')
-    public role: UserRole,
+    public role: UserRole = 'User',
   ) {
     super();
   }
