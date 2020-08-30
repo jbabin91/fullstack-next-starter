@@ -1,0 +1,29 @@
+version: "3.1"
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./docker-data/todo:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - 5432:5432
+  # api:
+  #   image: cookbook-api
+  #   build: .
+  #   depends_on:
+  #     - "db"
+  #   ports:
+  #     - 3001:3001
+  #   volumes:
+  #     - ./src:/usr/app/src
+  adminer:
+    depends_on:
+      - db
+    image: adminer
+    restart: always
+    ports:
+      - 9090:8080
