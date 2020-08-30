@@ -23,9 +23,3 @@ logs-api:
 				docker-compose -f docker-compose.yml -f docker-compose.prod.yml logs --tail=100 -f api
 ps:
 				docker-compose -f docker-compose.yml -f docker-compose.prod.yml ps
-login-timescale:
-				docker-compose -f docker-compose.yml -f docker-compose.prod.yml exec timescale /bin/bash
-login-api:
-				docker-compose -f docker-compose.yml -f docker-compose.prod.yml exec api /bin/bash
-db-shell:
-				docker-compose -f docker-compose.yml -f docker-compose.prod.yml exec timescale psql -Upostgres
