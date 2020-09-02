@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node dist/index",
-    "dev": "ts-node-dev --inspect -- src/index",
+    "dev": "ts-node-dev --respawn --inspect -- src/index",
     "test": "jest",
     "build": "tsc -p tsconfig.build.json",
     "migrate": "npx knex --knexfile knexfile.ts migrate:latest",
@@ -21,7 +21,6 @@
     "bcrypt": "^5.0.0",
     "cookie": "^0.4.1",
     "dotenv": "^8.2.0",
-    "ideal-password": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.5",
     "pg": "^8.3.3",

@@ -1,4 +1,4 @@
-import { bind, route, authorize } from 'plumier';
+import { bind, route, authorize, response } from 'plumier';
 
 import { db } from '../../../model/db';
 import { LoginUser, Todo } from '../../../model/domain';
@@ -16,7 +16,10 @@ export class TodosController {
   // POST /api/v1/todos
   @route.post('')
   save(data: Todo, @bind.user() user: LoginUser) {
-    return db('Todo').insert(<Todo>{ ...data, userId: user.userId });
+    return db('Todo')
+      .insert(<Todo>{ ...data, userId: user.userId })
+      .then(() => response.json(data))
+      .catch((err) => response.json(`Error: ${err}`).setStatus(400));
   }
 
   // GET /api/v1/todos?offset=<number>&limit=<number>
@@ -33,7 +36,10 @@ export class TodosController {
   @ownerOrAdmin()
   @route.put(':id')
   modify(id: number, data: Todo) {
-    return db('Todo').update(data).where({ id });
+    return db('Todo')
+      .update(data)
+      .where({ id })
+      .then(() => response.json(data));
   }
 
   // DELETE /api/v1/todos/:id

@@ -6,8 +6,8 @@ build:
 				docker-compose -f docker-compose.yml -f docker-compose.prod.yml build $(c)
 up:
 				docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d $(c)
-start:
-				docker-compose -f docker-compose.yml -f docker-compose.prod.yml start $(c)
+dev:
+				docker-compose -f docker-compose.yml up -d $(c)
 down:
 				docker-compose -f docker-compose.yml -f docker-compose.prod.yml down $(c)
 destroy:
