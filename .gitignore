@@ -7,3 +7,4 @@ test/**/*.js
 .env
 docker-data/
 dist/
+*-error.log

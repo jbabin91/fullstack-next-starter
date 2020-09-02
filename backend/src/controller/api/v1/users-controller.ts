@@ -11,14 +11,6 @@ function ownerOrAdmin() {
 }
 
 export class UsersController {
-  // POST /api/v1/users
-  @authorize.public()
-  @route.post('')
-  async save(data: User) {
-    const password = await bcrypt.hash(data.password, 12);
-    return db('User').insert({ ...data, password, role: 'User' });
-  }
-
   // GET /api/v1/users?offset=<number>&limit=<number>
   @authorize.role('Admin')
   @route.get('')

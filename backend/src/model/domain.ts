@@ -21,6 +21,7 @@ export class User extends Domain {
     @val.email()
     @uniqueEmail()
     public email: string,
+    @val.required()
     public password: string,
     @val.required()
     public name: string,
